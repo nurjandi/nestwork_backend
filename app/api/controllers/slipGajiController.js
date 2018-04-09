@@ -9,15 +9,11 @@ const { handler: errorHandler } = require('../../middleware/error');
  * @private
  */
 exports.ajukanSlipGaji = async (req, res, next) => {
-  	try{
-  		const slip = new Slip(req.body);
-   		const savedcuti = await cuti.save();        
-        const cutiTransformed = savedcuti.transform();     
+ 	const slip = new Slip(req.body);
+   	const savedslip = await slip.save();        
+        const slipTransformed = savedslip.transform();     
         res.status(httpStatus.CREATED);
-        return res.json(cutiTransformed);
-    }catch(error){
-        return error;
-    }
+        return res.json(slipTransformed);
 }
 exports.getAllSlipGaji = async (req, res) => {
 	try{

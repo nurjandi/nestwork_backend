@@ -26,6 +26,7 @@ const userSchema = new mongoose.Schema({
         type: String, 
         index:true,
         maxlength: 1,
+	default : '0', 
     },
     gaji:{
         type: Number,
@@ -55,8 +56,7 @@ userSchema.pre('save', async function save(next) {
 userSchema.method({
   transform() {
     const transformed = {};
-    const fields = ['id', 'id_user','nama','backlog', 'task','note','date'];
-
+    const fields = ['id', 'email', 'waktu', 'status', 'gaji', 'CreatedAt'];
     fields.forEach((field) => {
       transformed[field] = this[field];
     });

@@ -37,23 +37,60 @@ exports.getAllCuti = async (req, res) => {
 }
 
 exports.accCuti = async (req, res) => {
-	var id = req.body._id;
-	var status  = req.body.status;
-	console.log(status);
-	Cuti.findOneAndUpdate(id, { status: status }, {upsert:true}, function(err, cuti){
-    if(err){
-		res.send(err);
-		console.log(err);
-	}
-	const message = 'updated'
-	const status = httpStatus.OK;
-	res.json({message, status, cuti});
+	var id = req.params.id;
+	var status  = 1;
+	var respons = 1;
+	Cuti.findOneAndUpdate({"_id" : id}, {"$set" : {"status" : status, "respons" : respons}}, {upsert:true}, function(err, cuti){
+    	if(err){
+			res.send(err);
+			console.log(err);
+		}
+		const message = 'updated'
+		const status = httpStatus.OK;
+		res.json({message, status, cuti});
 	});
 }
 
-exports.findByID = function(req, res){
-	const id = req.params._id;
-	Cuti.findOne(id,
+exports.tolakCuti = async (req, res) => {
+	var id = req.params.id;
+	var status  = 0;
+	var respons = 1;
+	Cuti.findOneAndUpdate({"_id" : id}, {"$set" : {"status" : status, "respons" : respons}}, {upsert:true}, function(err, cuti){
+    	if(err){
+			res.send(err);
+			console.log(err);
+		}
+		const message = 'updated'
+		const status = httpStatus.OK;
+		res.json({message, status, cuti});
+	});
+}
+
+exports.findByEmail = function(req, res){
+	const email = req.params.email;
+	Cuti.findOne({'email' : email},
+		function(err, cuti){
+			if(err){
+				res.send(err);
+				console.log(err);
+			}
+			res.json(cuti);
+	});
+};
+exports.findByStatus = function(req, res){
+	const status = req.params.status;
+	Cuti.findOne({'status' : status},
+		function(err, cuti){
+			if(err){
+				res.send(err);
+				console.log(err);
+			}
+			res.json(cuti);
+		});
+};
+exports.findByRespons = function(req, res){
+	const respons = req.params.respons;
+	Cuti.findOne({'respons' : respons},
 		function(err, cuti){
 			if(err){
 				res.send(err);

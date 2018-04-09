@@ -19,6 +19,10 @@ const cutiSchema = new mongoose.Schema({
         required: true,
         trim : true,
         lowercase:true,        
+    },
+    nama:{
+        type: String,
+        index: true,
     },        
     awal_cuti:{
         type : Date,        
@@ -32,10 +36,15 @@ const cutiSchema = new mongoose.Schema({
         type: String,
         index:true,          
     },
+    respons:{
+        type: Number,
+        index: true,
+        default: 0,
+    },
     status:{
-        type: String,
+        type: Number,
         index : true,
-        default : 'waiting to approve',
+        default : 0,
     },    
   }, {
   timestamps: true,
@@ -61,7 +70,7 @@ cutiSchema.pre('save', async function save(next) {
 cutiSchema.method({
   transform() {
     const transformed = {};
-    const fields = ['id', 'email','awal_cuti','akhir_cuti','keterangan', 'status'];
+    const fields = ['id', 'email','nama','awal_cuti','akhir_cuti','keterangan', 'status', 'respons'];
 
     fields.forEach((field) => {
       transformed[field] = this[field];

@@ -53,7 +53,7 @@ router
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated Users can access the data
    */
   .get(authorize(), cutiController.getAllCuti);
-  router.route('/getOneCuti/:id')
+  router.route('/getOneCuti/:email')
   /**
    * @api {get} api/cuti/getOneCuti Get One cuti
    * @apiDescription get One user's cuti
@@ -70,6 +70,9 @@ router
    *
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated Users can access the data
    */
-   .get(authorize(), cutiController.findByID);
-   router.route('/accCuti').post(authorize(ADMIN), cutiController.accCuti);
+   .get(authorize(), cutiController.findByEmail);
+   router.route('/accCuti/:id').get(authorize(ADMIN), cutiController.accCuti);
+   router.route('/tolakCuti/:id').get(authorize(ADMIN), cutiController.tolakCuti);
+   router.route('/findByStatus/:status').get(authorize(ADMIN), cutiController.findByStatus);
+   router.route('/findByRespons/:respons').get(authorize(ADMIN), cutiController.findByRespons);
 module.exports = router;

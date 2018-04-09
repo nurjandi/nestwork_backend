@@ -22,16 +22,14 @@ router
    * @apiHeader {String} Athorization  User's access token
    *
    * @apiParam  {String}   email       email's user
-   * @apiParam  {Date}   awal_cuti   awal cuti user
-   * @apiParam  {Date}   akhir_cuti  akhir cuti user
-   * @apiParam  {String}   status    status cuti
-   * @apiParam  {String}   keterangan  keterangan user
+   * @apiParam  {Date}   waktu   waktu pengajuan
+   * @apiParam  {String}   status  status slip gaji
+   * @apiParam  {String}   gaji   gaji
    *
    * @apiSuccess  {String}   email       email's user
-   * @apiSuccess  {Date}   awal_cuti   awal cuti user
-   * @apiSuccess  {Date}   akhir_cuti  akhir cuti user
-   * @apiSuccess  {String}   status    status cuti
-   * @apiSuccess  {String}   keterangan  keterangan user
+   * @apiSuccess  {Date}   waktu   waktu pengajuan
+   * @apiSuccess  {String}   status  status slip gaji
+   * @apiSuccess  {String}   gaji   gaji
    *
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated Users can access the data
    */
@@ -48,9 +46,9 @@ router.route('/getAllSlipGaji')
    * @apiHeader {String} Athorization  User's access token
    *
    * @apiSuccess  {String}   email       email's user
-   * @apiSuccess  {Date}   awal_cuti   awal cuti user
-   * @apiSuccess  {Date}   akhir_cuti  akhir cuti user
-   * @apiSuccess  {String}   keterangan  keterangan user
+   * @apiSuccess  {Date}   waktu   waktu pengajuan
+   * @apiSuccess  {String}   status  status slip gaji
+   * @apiSuccess  {String}   gaji   gaji
    *
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated Users can access the data
    */
