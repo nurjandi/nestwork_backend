@@ -15,10 +15,7 @@ const {env, jwtSecret, jwtExpirationInterval} = require('../../config/variables'
 const cutiSchema = new mongoose.Schema({
     email:{
         type : String,
-        match : /^\S+@\S+\.\S+$/,
-        required: true,
-        trim : true,
-        lowercase:true,        
+        index:true,        
     },
     nama:{
         type: String,
@@ -56,13 +53,6 @@ const cutiSchema = new mongoose.Schema({
  * - validations
  * - virtuals
  */
-cutiSchema.pre('save', async function save(next) {
-  try {  
-    return next();
-  } catch (error) {
-    return next(error);
-  }
-});
 
 /**
  * Methods
@@ -83,14 +73,13 @@ cutiSchema.method({
 /**
  * Statics
  */
-cutiSchema.statics = {  
+/*cutiSchema.statics = {  
 
-  /**
    * Get Present
    *
    * @param {ObjectId} id - The objectId of Present.
    * @returns {Promise<Present, APIError>}
-   */
+   
   async get(email) {
     try {
       let cuti;
@@ -110,7 +99,7 @@ cutiSchema.statics = {
       throw error;
     }
   },
-};
+};*/
 
 /**
  * @typedef User

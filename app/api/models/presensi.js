@@ -17,7 +17,6 @@ const presentSchema = new mongoose.Schema({
         type : String,
         match : /^\S+@\S+\.\S+$/,
         required: true,
-        unique : true,
         trim : true,
         lowercase:true,            
     },        

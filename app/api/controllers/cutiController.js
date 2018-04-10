@@ -6,7 +6,7 @@ const { handler: errorHandler } = require('../../middleware/error');
  * Post Present
  * @private
  */
-exports.ajukanCuti = async (req, res, next) => {
+exports.ajukanCuti = async (req, res) => {
   	try{
   		const cuti = new Cuti(req.body);
    		const savedcuti = await cuti.save();        
@@ -98,4 +98,34 @@ exports.findByRespons = function(req, res){
 			}
 			res.json(cuti);
 	});
+};
+
+exports.destroyAll = function(req, res) {
+    Cuti.remove({}, function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json('success deleting all file');
+            }
+        });
+};
+
+exports.destroyByID = function(req, res){
+	const id = req.params.id;
+	Cuti.remove({"_id" : id}, function(err){
+			if (err) {
+				console.log(err);
+			} else{
+				res.json('success delete by id');
+			}
+	});
+};
+exports.dropCuti = function(req, res){
+	Cuti.collection.drop(function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json('success deleting all file');
+            }
+        });
 };
