@@ -68,7 +68,7 @@ exports.tolakCuti = async (req, res) => {
 
 exports.findByEmail = function(req, res){
 	const email = req.params.email;
-	Cuti.findOne({'email' : email},
+	Cuti.find({'email' : email},
 		function(err, cuti){
 			if(err){
 				res.send(err);
@@ -79,7 +79,7 @@ exports.findByEmail = function(req, res){
 };
 exports.findByStatus = function(req, res){
 	const status = req.params.status;
-	Cuti.findOne({'status' : status},
+	Cuti.find({'status' : status},
 		function(err, cuti){
 			if(err){
 				res.send(err);
@@ -90,7 +90,7 @@ exports.findByStatus = function(req, res){
 };
 exports.findByRespons = function(req, res){
 	const respons = req.params.respons;
-	Cuti.findOne({'respons' : respons},
+	Cuti.find({'respons' : respons},
 		function(err, cuti){
 			if(err){
 				res.send(err);

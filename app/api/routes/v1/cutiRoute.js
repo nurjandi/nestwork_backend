@@ -23,11 +23,15 @@ router
    * @apiHeader {String} Athorization  User's access token
    *
    * @apiParam  {String}   email       email's user
+   * @apiParam  {String}   nama  nama user
    * @apiParam  {Date}   awal_cuti   awal cuti user
    * @apiParam  {Date}   akhir_cuti  akhir cuti user
    * @apiParam  {String}   keterangan  keterangan user
    *
+   * @apiHeader {String} Athorization  User's access token
+   * @apiSuccess  {Object}   id  id user
    * @apiSuccess  {String}   email       email's user
+   * @apiSuccess {String}   nama  nama user
    * @apiSuccess  {Date}   awal_cuti   awal cuti user
    * @apiSuccess  {Date}   akhir_cuti  akhir cuti user
    * @apiSuccess  {String}   keterangan  keterangan user
@@ -44,26 +48,32 @@ router
    * @apiGroup User
    * @apiPermission user
    *
-   * @apiHeader {String} Athorization  User's access token
+   * @apiHeader {String} Athorization  Admin's access token
+   * @apiSuccess  {Object}   id  id user
    * @apiSuccess  {String}   email       email's user
+   * @apiSuccess {String}   nama  nama user
    * @apiSuccess  {Date}   awal_cuti   awal cuti user
    * @apiSuccess  {Date}   akhir_cuti  akhir cuti user
    * @apiSuccess  {String}   keterangan  keterangan user
    *
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated Users can access the data
    */
-  .get(authorize(), cutiController.getAllCuti);
+  .get(authorize(ADMIN), cutiController.getAllCuti);
   router.route('/getOneCuti/:email')
   /**
-   * @api {get} api/cuti/getOneCuti Get One cuti
+   * @api {get} api/cuti/getOneCuti Get One cuti by email
    * @apiDescription get One user's cuti
    * @apiVersion 1.0.0
    * @apiName UserPresent
    * @apiGroup User
    * @apiPermission user
    *
-   * @apiHeader {String} Athorization  User's access token
+   * @apiParam  {String}       email     User's email
+   *
+   * @apiHeader {String} Athorization  User's and Admin's access token
+   * @apiSuccess  {Object}   id  id user
    * @apiSuccess  {String}   email       email's user
+   * @apiSuccess {String}   nama  nama user
    * @apiSuccess  {Date}   awal_cuti   awal cuti user
    * @apiSuccess  {Date}   akhir_cuti  akhir cuti user
    * @apiSuccess  {String}   keterangan  keterangan user
@@ -80,8 +90,12 @@ router
    * @apiGroup User
    * @apiPermission user
    *
-   * @apiHeader {String} Athorization  Admin's access token
+   * @apiParam  {String}             email     User's email
+   *
+   * @apiHeader {String} Athorization  Admin access token
+   * @apiSuccess  {Object}   id  id user
    * @apiSuccess  {String}   email       email's user
+   * @apiSuccess {String}   nama  nama user
    * @apiSuccess  {Date}   awal_cuti   awal cuti user
    * @apiSuccess  {Date}   akhir_cuti  akhir cuti user
    * @apiSuccess  {String}   keterangan  keterangan user
@@ -98,8 +112,13 @@ router
    * @apiGroup User
    * @apiPermission user
    *
+   *
+   * @apiParam  {String}             id     User's id
+   *
    * @apiHeader {String} Athorization  Admin's access token
+   * @apiSuccess  {Object}   id  id user
    * @apiSuccess  {String}   email       email's user
+   * @apiSuccess {String}   nama  nama user
    * @apiSuccess  {Date}   awal_cuti   awal cuti user
    * @apiSuccess  {Date}   akhir_cuti  akhir cuti user
    * @apiSuccess  {String}   keterangan  keterangan user
@@ -116,8 +135,12 @@ router
    * @apiGroup User
    * @apiPermission user
    *
+   * @apiParam  {String}             status     User's email
+   *
    * @apiHeader {String} Athorization  Admin's access token
+   * @apiSuccess  {Object}   id  id user
    * @apiSuccess  {String}   email       email's user
+   * @apiSuccess {String}   nama  nama user
    * @apiSuccess  {Date}   awal_cuti   awal cuti user
    * @apiSuccess  {Date}   akhir_cuti  akhir cuti user
    * @apiSuccess  {String}   keterangan  keterangan user
@@ -135,7 +158,9 @@ router
    * @apiPermission user
    *
    * @apiHeader {String} Athorization  Admin's access token
+   * @apiSuccess  {Object}   id  id user
    * @apiSuccess  {String}   email       email's user
+   * @apiSuccess {String}   nama  nama user
    * @apiSuccess  {Date}   awal_cuti   awal cuti user
    * @apiSuccess  {Date}   akhir_cuti  akhir cuti user
    * @apiSuccess  {String}   keterangan  keterangan user
@@ -153,10 +178,8 @@ router
    * @apiPermission user
    *
    * @apiHeader {String} Athorization  Admin's access token
-   * @apiSuccess  {String}   email       email's user
-   * @apiSuccess  {Date}   awal_cuti   awal cuti user
-   * @apiSuccess  {Date}   akhir_cuti  akhir cuti user
-   * @apiSuccess  {String}   keterangan  keterangan user
+   * @apisuccess {String} success delete data
+   *
    *
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated Users can access the data
    */
@@ -170,11 +193,7 @@ router
    * @apiGroup User
    * @apiPermission user
    *
-   * @apiHeader {String} Athorization  Admin's access token
-   * @apiSuccess  {String}   email       email's user
-   * @apiSuccess  {Date}   awal_cuti   awal cuti user
-   * @apiSuccess  {Date}   akhir_cuti  akhir cuti user
-   * @apiSuccess  {String}   keterangan  keterangan user
+   * @apisuccess {String} success drop collection
    *
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated Users can access the data
    */

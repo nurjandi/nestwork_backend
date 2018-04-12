@@ -1250,10 +1250,10 @@
     "groupTitle": "User"
   },
   {
-    "type": "post",
-    "url": "api/cuti/ajukanCuti",
-    "title": "add cuti",
-    "description": "<p>post user's cuti</p>",
+    "type": "get",
+    "url": "api/presents/getOnePresent/:userId",
+    "title": "get One Present",
+    "description": "<p>get present user's</p>",
     "version": "1.0.0",
     "name": "UserPresent",
     "group": "User",
@@ -1275,36 +1275,91 @@
         ]
       }
     },
-    "parameter": {
+    "success": {
       "fields": {
-        "Parameter": [
+        "Success 200": [
           {
-            "group": "Parameter",
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>present's id</p>"
+          },
+          {
+            "group": "Success 200",
             "type": "String",
             "optional": false,
             "field": "email",
-            "description": "<p>email's user</p>"
+            "description": "<p>user's id</p>"
           },
           {
-            "group": "Parameter",
-            "type": "Date",
-            "optional": false,
-            "field": "awal_cuti",
-            "description": "<p>awal cuti user</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Date",
-            "optional": false,
-            "field": "akhir_cuti",
-            "description": "<p>akhir cuti user</p>"
-          },
-          {
-            "group": "Parameter",
+            "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "keterangan",
-            "description": "<p>keterangan user</p>"
+            "field": "backlog",
+            "description": "<p>Backlog</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "task",
+            "description": "<p>Task</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Note",
+            "description": "<p>Note</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Timestamp</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Unauthorized 401": [
+          {
+            "group": "Unauthorized 401",
+            "optional": false,
+            "field": "Unauthorized",
+            "description": "<p>Only authenticated Users can access the data</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/api/routes/v1/presentRoute.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "delete",
+    "url": "api/cuti/DeleteAllCuti",
+    "title": "delete all cuti",
+    "description": "<p>delete all cuti</p>",
+    "version": "1.0.0",
+    "name": "UserPresent",
+    "group": "User",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Athorization",
+            "description": "<p>Admin's access token</p>"
           }
         ]
       }
@@ -1316,8 +1371,76 @@
             "group": "Success 200",
             "type": "String",
             "optional": false,
+            "field": "success",
+            "description": "<p>delete data</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Unauthorized 401": [
+          {
+            "group": "Unauthorized 401",
+            "optional": false,
+            "field": "Unauthorized",
+            "description": "<p>Only authenticated Users can access the data</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/api/routes/v1/cutiRoute.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "get",
+    "url": "api/cuti/getAllCuti",
+    "title": "Get All cuti",
+    "description": "<p>get all user's cuti</p>",
+    "version": "1.0.0",
+    "name": "UserPresent",
+    "group": "User",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Athorization",
+            "description": "<p>Admin's access token</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "id",
+            "description": "<p>id user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
             "field": "email",
             "description": "<p>email's user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nama",
+            "description": "<p>nama user</p>"
           },
           {
             "group": "Success 200",
@@ -1586,9 +1709,9 @@
   },
   {
     "type": "get",
-    "url": "api/cuti/ajukanCuti",
-    "title": "add cuti",
-    "description": "<p>get all user's cuti</p>",
+    "url": "api/cuti/accCuti",
+    "title": "Accept cuti by ID",
+    "description": "<p>accept user's cuti</p>",
     "version": "1.0.0",
     "name": "UserPresent",
     "group": "User",
@@ -1597,6 +1720,19 @@
         "name": "user"
       }
     ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>User's email</p>"
+          }
+        ]
+      }
+    },
     "header": {
       "fields": {
         "Header": [
@@ -1605,7 +1741,7 @@
             "type": "String",
             "optional": false,
             "field": "Athorization",
-            "description": "<p>User's access token</p>"
+            "description": "<p>Admin access token</p>"
           }
         ]
       }
@@ -1615,10 +1751,24 @@
         "Success 200": [
           {
             "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "id",
+            "description": "<p>id user</p>"
+          },
+          {
+            "group": "Success 200",
             "type": "String",
             "optional": false,
             "field": "email",
             "description": "<p>email's user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nama",
+            "description": "<p>nama user</p>"
           },
           {
             "group": "Success 200",
@@ -1661,9 +1811,315 @@
   },
   {
     "type": "get",
-    "url": "api/presents/getOnePresent/:userId",
-    "title": "get One Present",
-    "description": "<p>get present user's</p>",
+    "url": "api/cuti/getOneCuti",
+    "title": "Get One cuti by email",
+    "description": "<p>get One user's cuti</p>",
+    "version": "1.0.0",
+    "name": "UserPresent",
+    "group": "User",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>User's email</p>"
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Athorization",
+            "description": "<p>User's and Admin's access token</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "id",
+            "description": "<p>id user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>email's user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nama",
+            "description": "<p>nama user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "awal_cuti",
+            "description": "<p>awal cuti user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "akhir_cuti",
+            "description": "<p>akhir cuti user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "keterangan",
+            "description": "<p>keterangan user</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Unauthorized 401": [
+          {
+            "group": "Unauthorized 401",
+            "optional": false,
+            "field": "Unauthorized",
+            "description": "<p>Only authenticated Users can access the data</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/api/routes/v1/cutiRoute.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "get",
+    "url": "api/cuti/tolakCuti",
+    "title": "Decline cuti by ID",
+    "description": "<p>decline user's cuti</p>",
+    "version": "1.0.0",
+    "name": "UserPresent",
+    "group": "User",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User's id</p>"
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Athorization",
+            "description": "<p>Admin's access token</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "id",
+            "description": "<p>id user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>email's user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nama",
+            "description": "<p>nama user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "awal_cuti",
+            "description": "<p>awal cuti user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "akhir_cuti",
+            "description": "<p>akhir cuti user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "keterangan",
+            "description": "<p>keterangan user</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Unauthorized 401": [
+          {
+            "group": "Unauthorized 401",
+            "optional": false,
+            "field": "Unauthorized",
+            "description": "<p>Only authenticated Users can access the data</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/api/routes/v1/cutiRoute.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "get",
+    "url": "api/cuti/findByStatus",
+    "title": "Get cuti by status",
+    "description": "<p>get user's cuti by status</p>",
+    "version": "1.0.0",
+    "name": "UserPresent",
+    "group": "User",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p>User's email</p>"
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Athorization",
+            "description": "<p>Admin's access token</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "id",
+            "description": "<p>id user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>email's user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nama",
+            "description": "<p>nama user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "awal_cuti",
+            "description": "<p>awal cuti user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "akhir_cuti",
+            "description": "<p>akhir cuti user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "keterangan",
+            "description": "<p>keterangan user</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Unauthorized 401": [
+          {
+            "group": "Unauthorized 401",
+            "optional": false,
+            "field": "Unauthorized",
+            "description": "<p>Only authenticated Users can access the data</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/api/routes/v1/cutiRoute.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "post",
+    "url": "api/cuti/ajukanCuti",
+    "title": "add cuti",
+    "description": "<p>post user's cuti</p>",
     "version": "1.0.0",
     "name": "UserPresent",
     "group": "User",
@@ -1685,50 +2141,91 @@
         ]
       }
     },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>email's user</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "nama",
+            "description": "<p>nama user</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Date",
+            "optional": false,
+            "field": "awal_cuti",
+            "description": "<p>awal cuti user</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Date",
+            "optional": false,
+            "field": "akhir_cuti",
+            "description": "<p>akhir cuti user</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "keterangan",
+            "description": "<p>keterangan user</p>"
+          }
+        ]
+      }
+    },
     "success": {
       "fields": {
         "Success 200": [
           {
             "group": "Success 200",
-            "type": "String",
+            "type": "Object",
             "optional": false,
             "field": "id",
-            "description": "<p>present's id</p>"
+            "description": "<p>id user</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
             "field": "email",
-            "description": "<p>user's id</p>"
+            "description": "<p>email's user</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "backlog",
-            "description": "<p>Backlog</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "task",
-            "description": "<p>Task</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "Note",
-            "description": "<p>Note</p>"
+            "field": "nama",
+            "description": "<p>nama user</p>"
           },
           {
             "group": "Success 200",
             "type": "Date",
             "optional": false,
-            "field": "createdAt",
-            "description": "<p>Timestamp</p>"
+            "field": "awal_cuti",
+            "description": "<p>awal cuti user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "akhir_cuti",
+            "description": "<p>akhir cuti user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "keterangan",
+            "description": "<p>keterangan user</p>"
           }
         ]
       }
@@ -1745,13 +2242,143 @@
         ]
       }
     },
-    "filename": "app/api/routes/v1/presentRoute.js",
+    "filename": "app/api/routes/v1/cutiRoute.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "get",
+    "url": "api/cuti/findByRespons",
+    "title": "Get cuti by Respons",
+    "description": "<p>get cuti by Respons</p>",
+    "version": "1.0.0",
+    "name": "UserPresent",
+    "group": "User",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Athorization",
+            "description": "<p>Admin's access token</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "id",
+            "description": "<p>id user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>email's user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nama",
+            "description": "<p>nama user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "awal_cuti",
+            "description": "<p>awal cuti user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "akhir_cuti",
+            "description": "<p>akhir cuti user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "keterangan",
+            "description": "<p>keterangan user</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Unauthorized 401": [
+          {
+            "group": "Unauthorized 401",
+            "optional": false,
+            "field": "Unauthorized",
+            "description": "<p>Only authenticated Users can access the data</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/api/routes/v1/cutiRoute.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "delete",
+    "url": "api/cuti/dropCollectionCuti",
+    "title": "Get",
+    "description": "<p>drop tabel cuti</p>",
+    "version": "1.0.0",
+    "name": "UserPresent",
+    "group": "User",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "success",
+            "description": "<p>drop collection</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Unauthorized 401": [
+          {
+            "group": "Unauthorized 401",
+            "optional": false,
+            "field": "Unauthorized",
+            "description": "<p>Only authenticated Users can access the data</p>"
+          }
+        ]
+      }
+    },
+    "filename": "app/api/routes/v1/cutiRoute.js",
     "groupTitle": "User"
   },
   {
     "type": "get",
     "url": "api/users/profile",
-    "title": "User PRofile",
+    "title": "User Profile",
     "description": "<p>Get logged in user profile information</p>",
     "version": "1.0.0",
     "name": "UserProfile",
@@ -1870,22 +2497,22 @@
             "group": "Success 200",
             "type": "Date",
             "optional": false,
-            "field": "awal_cuti",
-            "description": "<p>awal cuti user</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Date",
-            "optional": false,
-            "field": "akhir_cuti",
-            "description": "<p>akhir cuti user</p>"
+            "field": "waktu",
+            "description": "<p>waktu pengajuan</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "keterangan",
-            "description": "<p>keterangan user</p>"
+            "field": "status",
+            "description": "<p>status slip gaji</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "gaji",
+            "description": "<p>gaji</p>"
           }
         ]
       }
@@ -1945,29 +2572,22 @@
             "group": "Parameter",
             "type": "Date",
             "optional": false,
-            "field": "awal_cuti",
-            "description": "<p>awal cuti user</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Date",
-            "optional": false,
-            "field": "akhir_cuti",
-            "description": "<p>akhir cuti user</p>"
+            "field": "waktu",
+            "description": "<p>waktu pengajuan</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "status",
-            "description": "<p>status cuti</p>"
+            "description": "<p>status slip gaji</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "keterangan",
-            "description": "<p>keterangan user</p>"
+            "field": "gaji",
+            "description": "<p>gaji</p>"
           }
         ]
       }
@@ -1986,29 +2606,22 @@
             "group": "Success 200",
             "type": "Date",
             "optional": false,
-            "field": "awal_cuti",
-            "description": "<p>awal cuti user</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Date",
-            "optional": false,
-            "field": "akhir_cuti",
-            "description": "<p>akhir cuti user</p>"
+            "field": "waktu",
+            "description": "<p>waktu pengajuan</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
             "field": "status",
-            "description": "<p>status cuti</p>"
+            "description": "<p>status slip gaji</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "keterangan",
-            "description": "<p>keterangan user</p>"
+            "field": "gaji",
+            "description": "<p>gaji</p>"
           }
         ]
       }
